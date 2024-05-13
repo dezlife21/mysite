@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jann Mardenborough</title>
+    <link rel="stylesheet" href="style4.css">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="headerlink">
+        <span>Jann Mardenborough<span>
+        </a>
+    <nav class="navbar">
+        <a href="index.html" class="header_link">Info</a>
+        <a href="yann.html" class="header_link">Racing</a>
+        <a href="video.html" class="header_link">Video</a>
+        <a href="#map" class="header_link">Map</a>
+        <a href="#test" class="header_link">Test</a>
+    </nav>
+    </header>
+    <section class="map" id="map">
+        <div class="text">
+            <h2>MAP AND TEST</h2>
+        </div>
+            <div class="form">
+            <div class="imag">
+                <a href="https://uk.wikipedia.org/wiki/24_%D0%B3%D0%BE%D0%B4%D0%B8%D0%BD%D0%B8_%D0%9B%D0%B5-%D0%9C%D0%B0%D0%BD%D0%B0" target="_blank">
+                <img src="images/ma.png">
+                </a>
+            </div>
+            <form method="post" name="quiz" class="test" id="test">
+                <p>1. У якому році став третім і наймолодшим переможцем конкурсу GT Academy?</p>
+                <input type="radio" name="question1" value="2011" onclick="showAnswer(this)"> 2011<br>
+                <input type="radio" name="question1" value="2012" onclick="showAnswer(this)"> 2012<br>
+                <input type="radio" name="question1" value="2013" onclick="showAnswer(this)"> 2013<br>
+                <input type="radio" name="question1" value="2014" onclick="showAnswer(this)"> 2014<br>
+                <div id="answer1"></div><br>
+            
+                <p>2. Яка компанія організувала конкурс GT Academy?</p>
+                <input type="radio" name="question2" value="Nissan" onclick="showAnswer(this)"> Nissan<br>
+                <input type="radio" name="question2" value="Toyota" onclick="showAnswer(this)"> Toyota<br>
+                <input type="radio" name="question2" value="Honda" onclick="showAnswer(this)"> Honda<br>
+                <input type="radio" name="question2" value="Ferrari" onclick="showAnswer(this)"> Ferrari<br>
+                <div id="answer2"></div><br>
+            
+                <p>3. В якій гонці він зайняв третє місце в своїй категорії?</p>
+                <input type="radio" name="question3" value="24 години Ле-Мана" onclick="showAnswer(this)"> 24 години Ле-Мана<br>
+                <input type="radio" name="question3" value="24-години Дубаю" onclick="showAnswer(this)"> 24-години Дубаю<br>
+                <input type="radio" name="question3" value="24 години Нюрбургринга" onclick="showAnswer(this)"> 24 години Нюрбургринга<br>
+                <input type="radio" name="question3" value="24 години Дейтона" onclick="showAnswer(this)"> 24 години Дейтона<br>
+                <div id="answer3"></div><br>
+            
+                <p>4. У яких чемпіонатах він брав участь у Японії?</p>
+                <input type="checkbox" name="question4" value="Super GT" onclick="showAnswer(this)"> Super GT<br>
+                <input type="checkbox" name="question4" value="Super Formula" onclick="showAnswer(this)"> Super Formula<br>
+                <input type="checkbox" name="question4" value="FIA World Endurance Championship" onclick="showAnswer(this)"> FIA World Endurance Championship<br>
+                <input type="checkbox" name="question4" value="Formula 1" onclick="showAnswer(this)"> Formula 1<br>
+                <div id="answer4"></div><br>
+            
+                <p>5. У якому році він виграв гонку і був претендентом на титул у класі GT300 Super GT?</p>
+                <input type="text" name="question5" placeholder="Введіть рік" oninput="showAnswer(this)"><br>
+                <div id="answer5"></div><br>
+            
+                <input name="check" onclick="checkQuiz(this.form)" type="button" value="Перевірити">
+                <br><textarea name="result" rows="5" cols="50"> </textarea>
+            </form>
+            
+            <script>
+            function showAnswer(element) {
+                var answerDiv = document.getElementById("answer" + element.name.slice(-1));
+                answerDiv.innerHTML = "Ваша відповідь: " + element.value;
+            }
+            
+            function checkQuiz(quiz) {
+                var score = 0;
+                if (quiz.question1.value === "2011") { score++; }
+                if (quiz.question2.value === "Nissan") { score++; }
+                if (quiz.question3.value === "24-години Дубаю") { score++; }
+                var checkboxes = quiz.querySelectorAll('input[name="question4"]:checked');
+                if (checkboxes.length === 2) {
+                    var values = [];
+                    checkboxes.forEach(function(checkbox) {
+                        values.push(checkbox.value);
+                    });
+                    if (values.includes("Super GT") && values.includes("Super Formula")) { score++; }
+                }
+                if (quiz.question5.value === "2016") { score++; }
+            
+                var resultText = "Ваш результат: " + score + " з 5";
+                quiz.result.value = resultText;
+            }
+            </script>            
+            </div>
+    </section>
+    <footer class="footer">
+        <p class="copyright">©2024 Lytvynenko Vadym</p>
+    </footer>
+</body>
+</html>
